@@ -7,6 +7,7 @@ redisStandalone:
   #   secretName: redis-secret
   #   secretKey: password
   serviceType: ClusterIP
+  # name: ot-container-kit-redis
   resources: {}
     # requests:
     #   cpu: 100m
@@ -16,6 +17,7 @@ redisStandalone:
     #   memory: 128Mi
 
 externalService:
+  # name: ot-container-kit-external-service
   enabled: false
   # annotations:
   #   foo: bar
@@ -23,6 +25,7 @@ externalService:
   port: 6379
 
 serviceMonitor:
+  # name: ot-container-kit-prometheus-monitoring
   enabled: false
   interval: 30s
   scrapeTimeout: 10s

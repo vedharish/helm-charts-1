@@ -3,7 +3,7 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: {{ .Release.Name }}-prometheus-monitoring
+  name: {{ .Values.serviceMonitor.name | default ( print .Release.Name "-prometheus-monitoring" ) }}
   labels:
     app.kubernetes.io/name: {{ .Release.Name }}
     helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
@@ -14,7 +14,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: {{ .Release.Name }}
+      app: {{ .Values.redisStandalone.name | default .Release.Name }}
       redis_setup_type: standalone
       role: standalone
   endpoints:
